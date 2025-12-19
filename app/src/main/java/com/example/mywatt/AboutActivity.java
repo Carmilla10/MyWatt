@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
@@ -16,25 +15,24 @@ public class AboutActivity extends AppCompatActivity {
 
         setTitle("About Developer");
 
-        Button btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        // Remove these lines - no back button needed
+        // Button btnBack = findViewById(R.id.btnBack);
+        // btnBack.setOnClickListener(new View.OnClickListener() {
+        //     @Override
+        //     public void onClick(View v) {
+        //         finish();
+        //     }
+        // });
 
         TextView tvGithubUrl = findViewById(R.id.tvGithubUrl);
         tvGithubUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // UPDATE WITH YOUR GITHUB URL
                 String githubUrl = "https://github.com/Carmilla10/MyWatt";
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(githubUrl));
                 startActivity(browserIntent);
             }
         });
-
 
         TextView tvInstructions = findViewById(R.id.tvInstructions);
         tvInstructions.setText(
