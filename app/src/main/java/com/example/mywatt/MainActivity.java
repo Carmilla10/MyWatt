@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner spinnerMonth, spinnerRebate;
+    private Spinner spinnerMonth;
+    private RadioGroup radioGroupRebate;
     private EditText etUnits;
     private Button btnCalculate, btnViewList, btnAbout;
     private TextView tvTotalCharges, tvFinalCost;
@@ -25,12 +28,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setTitle("MyWatt");
-
         dbHelper = new DBHelper(this);
 
-
+        // Initialize views
         spinnerMonth = findViewById(R.id.spinnerMonth);
-        spinnerRebate = findViewById(R.id.spinnerRebate);
+        radioGroupRebate = findViewById(R.id.radioGroupRebate);
         etUnits = findViewById(R.id.etUnits);
         btnCalculate = findViewById(R.id.btnCalculate);
         btnViewList = findViewById(R.id.btnViewList);
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         tvTotalCharges = findViewById(R.id.tvTotalCharges);
         tvFinalCost = findViewById(R.id.tvFinalCost);
 
+        // month spinner
         String[] months = {"January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"};
         ArrayAdapter<String> monthAdapter = new ArrayAdapter<>(this,
@@ -45,12 +48,9 @@ public class MainActivity extends AppCompatActivity {
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerMonth.setAdapter(monthAdapter);
 
-
-        String[] rebates = {"0%", "1%", "2%", "3%", "4%", "5%"};
-        ArrayAdapter<String> rebateAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, rebates);
-        rebateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerRebate.setAdapter(rebateAdapter);
+        // Set default rebate to 0%
+        RadioButton radio0 = findViewById(R.id.radio0);
+        radio0.setChecked(true);
 
         // Button click listeners
         btnCalculate.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +73,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AboutActivity.class));
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Clear the form when returning to this activity
+        clearForm();
+    }
+
+    private void clearForm() {
+        etUnits.setText("");
+        radioGroupRebate.check(R.id.radio0);
+        spinnerMonth.setSelection(0);
+        tvTotalCharges.setText("RM 0.00");
+        tvFinalCost.setText("RM 0.00");
+
+        etUnits.setError(null);
     }
 
     private void calculateAndSave() {
@@ -100,9 +117,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-
-        String rebateStr = spinnerRebate.getSelectedItem().toString();
-        double rebate = Double.parseDouble(rebateStr.replace("%", ""));
+        // Get selected rebate from radio buttons
+        int selectedRadioId = radioGroupRebate.getCheckedRadioButtonId();
+        RadioButton selectedRadio = findViewById(selectedRadioId);
+        String rebateText = selectedRadio.getText().toString(); // e.g., "3%"
+        double rebate = Double.parseDouble(rebateText.replace("%", ""));
 
         // Calculate
         double totalCharges = computeCharges(units);
@@ -116,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
         long id = dbHelper.insertBill(month, units, totalCharges, rebate, finalCost);
         if (id > 0) {
             Toast.makeText(this, "Saved successfully!", Toast.LENGTH_SHORT).show();
-            // Clear input
-            etUnits.setText("");
         } else {
             Toast.makeText(this, "Save failed", Toast.LENGTH_SHORT).show();
         }

@@ -15,15 +15,6 @@ public class AboutActivity extends AppCompatActivity {
 
         setTitle("About Developer");
 
-        // Remove these lines - no back button needed
-        // Button btnBack = findViewById(R.id.btnBack);
-        // btnBack.setOnClickListener(new View.OnClickListener() {
-        //     @Override
-        //     public void onClick(View v) {
-        //         finish();
-        //     }
-        // });
-
         TextView tvGithubUrl = findViewById(R.id.tvGithubUrl);
         tvGithubUrl.setOnClickListener(new View.OnClickListener() {
             @Override

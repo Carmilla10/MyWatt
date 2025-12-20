@@ -28,14 +28,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- Month Spinner -->
-
+            <!-- Logo -->
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:srcCompat="@drawable/applogo" />
+                app:srcCompat="@drawable/applogo"
+                android:scaleType="fitCenter"
+                android:layout_marginBottom="10dp"/>
 
+            <!-- Month Spinner -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,25 +73,79 @@
                 android:padding="10dp"
                 android:elevation="2dp"
                 android:inputType="number"
-                android:hint="e.g., 467 kWh"/>
+                android:hint="e.g., 467 kWh"
+                android:text=""/>
 
-            <!-- Rebate Input -->
+            <!-- Rebate Radio Buttons -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rebate Percentage (0-5%)"
+                android:text="Rebate Percentage"
                 android:textSize="16sp"
                 android:textColor="#555555"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
                 android:textStyle="bold"/>
 
-            <Spinner
-                android:id="@+id/spinnerRebate"
+            <RadioGroup
+                android:id="@+id/radioGroupRebate"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:padding="10dp"
-                android:background="@drawable/spinner_arrow"/>
+                android:background="#FFFFFF"
+                android:elevation="2dp">
+
+                <RadioButton
+                    android:id="@+id/radio0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0%"
+                    android:textSize="14sp"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1%"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2%"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="3%"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:id="@+id/radio4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4%"
+                    android:textSize="14sp"/>
+
+                <RadioButton
+                    android:id="@+id/radio5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5%"
+                    android:textSize="14sp"/>
+            </RadioGroup>
+
             <!-- Calculate Button -->
             <Button
                 android:id="@+id/btnCalculate"
@@ -163,20 +219,21 @@
             <Button
                 android:id="@+id/btnViewList"
                 android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="20dp"
                 android:text="VIEW SAVED BILLS"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:layout_height="42dp"
-                android:layout_marginTop="20dp"
                 android:background="#B8454E"/>
+
             <Button
                 android:id="@+id/btnAbout"
                 android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="10dp"
                 android:text="ABOUT DEVELOPER"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                android:layout_height="42dp"
-                android:layout_marginTop="10dp"
                 android:background="#B8454E"/>
         </LinearLayout>
     </ScrollView>

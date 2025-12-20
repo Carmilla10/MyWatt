@@ -29,7 +29,6 @@ public class ListActivity extends AppCompatActivity {
 
         loadList();
 
-        // Click -> open details
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, android.view.View view, int pos, long id) {
