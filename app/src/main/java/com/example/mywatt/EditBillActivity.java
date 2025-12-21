@@ -19,7 +19,7 @@ public class EditBillActivity extends AppCompatActivity {
     private LinearLayout layoutDetails, layoutEdit;
     private TextView tvTitle, tvMonthDetail, tvUnitDetail, tvTotalDetail, tvRebateDetail, tvFinalDetail;
     private EditText etEditUnits;
-    private RadioGroup radioGroupEditRebate; // Changed from Spinner
+    private RadioGroup radioGroupEditRebate; 
     private TextView tvEditTotalCharges, tvEditFinalCost;
     private Button btnEdit, btnUpdate, btnDelete, btnCancel;
     private DBHelper dbHelper;
