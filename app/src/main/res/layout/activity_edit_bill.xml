@@ -229,7 +229,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp"
+                android:padding="8dp"
                 android:background="#FFFFFF"
                 android:elevation="2dp">
 
@@ -239,7 +239,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="0%"
-                    android:textSize="14sp"/>
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/editRadio1"
@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="1%"
-                    android:textSize="14sp"/>
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/editRadio2"
@@ -255,7 +255,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="2%"
-                    android:textSize="14sp"/>
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/editRadio3"
@@ -263,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="3%"
-                    android:textSize="14sp"/>
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/editRadio4"
@@ -271,7 +271,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="4%"
-                    android:textSize="14sp"/>
+                    android:textSize="12sp"/>
 
                 <RadioButton
                     android:id="@+id/editRadio5"
@@ -279,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="5%"
-                    android:textSize="14sp"/>
+                    android:textSize="12sp"/>
             </RadioGroup>
 
             <!-- Results Card -->

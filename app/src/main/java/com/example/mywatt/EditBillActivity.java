@@ -109,7 +109,7 @@ public class EditBillActivity extends AppCompatActivity {
                 // Switch back to details view
                 layoutDetails.setVisibility(View.VISIBLE);
                 layoutEdit.setVisibility(View.GONE);
-                
+
                 tvTitle.setText("Bill Details");
                 setTitle("Bill Details");
             }
